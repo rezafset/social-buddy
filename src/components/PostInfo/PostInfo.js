@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -20,11 +20,20 @@ const useStyles = makeStyles({
   media: {
     height: 240,
   },
+  rootBody: {
+    marginTop: 30,
+  },
 });
 
 const PostInfo = (props) => {
     const {title, body, id} = props.post;
     const classes = useStyles();
+
+    const history = useHistory();
+
+    const handleClick = (postId) =>{
+        history.push(`/postDetail/${postId}`);
+    }
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -32,20 +41,17 @@ const PostInfo = (props) => {
                     <Typography gutterBottom variant="h5" component="h2">
                         {title}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography className={classes.rootBody} variant="body2" color="textSecondary" component="p">
                         {body}
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <Link to={"/info/"+id}>
-                <CardActions className="button">
-                    <div>
-                        <Button className="btn-text" variant="contained" color="secondary">
-                         Secondary
-                       </Button>
-                    </div>
-                </CardActions>
-            </Link>
+            
+            <CardActions className="button">
+                <Button onClick={()=>handleClick(id)} variant="contained" color="secondary">
+                    Secondary
+                </Button>
+            </CardActions>            
         </Card>
     );
 };

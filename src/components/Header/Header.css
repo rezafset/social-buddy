@@ -1,8 +1,10 @@
 .header{
     text-align: center;
+    line-height: 100px;
 }
 .header nav{
     background: black;
+    line-height: 0;
 } 
 .header nav a{
     color: #fff;
