@@ -56,13 +56,13 @@ const PostDetail = () => {
     const user = fakeData.find(user => user.id === postId );
 
     useEffect(()=>{
-        fetch(`http://jsonplaceholder.typicode.com/posts/${postId}`)
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then(response=> response.json())
         .then(data=> setPostInfo(data))
     }, [])
 
     useEffect(()=>{
-        fetch(`http://jsonplaceholder.typicode.com/comments/${postId}`)
+        fetch(`https://jsonplaceholder.typicode.com/comments/${postId}`)
         .then(response=> response.json())
         .then(data=> setCommentPerson(data))
     }, [])
