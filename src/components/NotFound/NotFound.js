@@ -7,8 +7,13 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router-dom';
 
 const NotFound = () => {
+    const history = useHistory();
+    function handleClick(){
+        history.push('/home');
+    }
     return (
         <div className="notFound">
             <Card className="body">
@@ -20,7 +25,7 @@ const NotFound = () => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions className="button">
-                    <Button variant="contained" color="primary">
+                    <Button onClick={handleClick} variant="contained" color="primary">
                         Back to Home
                     </Button>
                 </CardActions>

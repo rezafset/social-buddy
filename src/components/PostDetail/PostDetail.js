@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import fakeData from '../../fakeData/user.js';
 import './PostDetail.css';
-import { View } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faHeading, faComment } from '@fortawesome/free-solid-svg-icons';
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,6 +20,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,6 +74,11 @@ const PostDetail = () => {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const history = useHistory();
+    function handleClick(){
+        history.push('/home');
+    }
 
     return (    
         <div className="post-show">
@@ -138,12 +143,13 @@ const PostDetail = () => {
                         <Typography paragraph>
                             <FontAwesomeIcon icon={ faComment } /> {commentPerson.body}
                         </Typography>
-                        <Typography>
-                            Thank You
+                        <Typography className="go-back">
+                            <Button onClick={handleClick} variant="contained" color="secondary">Go Back Home</Button>
                         </Typography>
                     </CardContent>
                 </Collapse>
             </Card>
+
         </div>
     );
 };

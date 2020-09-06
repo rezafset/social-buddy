@@ -49,7 +49,7 @@ const PostInfo = (props) => {
             
             <CardActions className="button">
                 <Button onClick={()=>handleClick(id)} variant="contained" color="secondary">
-                    Secondary
+                    See More
                 </Button>
             </CardActions>            
         </Card>
